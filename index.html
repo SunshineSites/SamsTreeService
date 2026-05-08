@@ -3,556 +3,422 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Somers Drapery | Sarasota, FL</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,700&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<title>Sam's Grapple Truck Service | Sarasota, FL</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --ivory: #f8f4ee;
-    --linen: #ede8df;
-    --silk: #d4c9b8;
-    --taupe: #8c7d6a;
-    --drape: #4a3f35;
-    --dark: #1e1a16;
-    --gold: #b8965a;
-    --gold-light: #d4b07a;
-    --cream: #faf7f2;
-    --text: #2a2218;
-    --muted: #7a6e62;
-    --border: rgba(180,160,130,0.2);
+    --dark: #0e1208;
+    --dark2: #161c0e;
+    --green: #3a7d1e;
+    --green-light: #52a828;
+    --green-pale: #d4edba;
+    --orange: #e07020;
+    --orange-light: #f08838;
+    --cream: #fdfaf4;
+    --sand: #f5f0e4;
+    --text: #0e1a08;
+    --muted: #4a5e38;
+    --border: rgba(58,125,30,0.2);
   }
   html { scroll-behavior: smooth; }
-  body { font-family: 'Jost', sans-serif; color: var(--text); background: var(--cream); line-height: 1.6; overflow-x: hidden; }
-  ::-webkit-scrollbar { width: 4px; }
-  ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
-
-  /* === DRAPERY CURTAIN EFFECT === */
-  /* Left curtain panel */
-  .curtain-left {
-    position: fixed; top: 0; left: 0; width: 48px; height: 100vh; z-index: 50;
-    pointer-events: none;
-    background: linear-gradient(90deg, rgba(74,63,53,0.18) 0%, rgba(74,63,53,0.06) 60%, transparent 100%);
-  }
-  .curtain-left::before {
-    content: '';
-    position: absolute; top: 0; left: 0; width: 6px; height: 100%;
-    background: linear-gradient(180deg, var(--gold) 0%, var(--gold-light) 20%, var(--gold) 40%, var(--gold-light) 60%, var(--gold) 80%, var(--gold-light) 100%);
-    opacity: 0.5;
-  }
-  /* Right curtain panel */
-  .curtain-right {
-    position: fixed; top: 0; right: 0; width: 48px; height: 100vh; z-index: 50;
-    pointer-events: none;
-    background: linear-gradient(270deg, rgba(74,63,53,0.18) 0%, rgba(74,63,53,0.06) 60%, transparent 100%);
-  }
-  .curtain-right::before {
-    content: '';
-    position: absolute; top: 0; right: 0; width: 6px; height: 100%;
-    background: linear-gradient(180deg, var(--gold) 0%, var(--gold-light) 20%, var(--gold) 40%, var(--gold-light) 60%, var(--gold) 80%, var(--gold-light) 100%);
-    opacity: 0.5;
-  }
-  /* Curtain rod */
-  .curtain-rod {
-    position: fixed; top: 0; left: 0; right: 0; height: 8px; z-index: 51;
-    background: linear-gradient(180deg, #8a7050 0%, var(--gold) 40%, #8a7050 100%);
-    pointer-events: none;
-  }
-  .curtain-rod::before {
-    content: '';
-    position: absolute; left: 0; top: 50%; transform: translateY(-50%);
-    width: 100%; height: 2px;
-    background: linear-gradient(90deg, rgba(255,255,255,0.3), rgba(255,255,255,0.1), rgba(255,255,255,0.3));
-  }
-  /* Ring hooks on rod */
-  .ring { position: fixed; top: 0; width: 14px; height: 14px; z-index: 52; pointer-events: none; }
-  .ring svg { width: 14px; height: 14px; }
+  body { font-family: 'Barlow', sans-serif; color: var(--text); background: var(--cream); line-height: 1.6; }
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-thumb { background: var(--green-light); border-radius: 3px; }
 
   /* NAV */
   nav {
-    position: fixed; top: 8px; left: 56px; right: 56px; z-index: 100;
-    background: rgba(248,244,238,0.97); backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--border);
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(14,18,8,0.98); backdrop-filter: blur(16px);
+    border-bottom: 3px solid var(--green-light);
     display: flex; align-items: center; justify-content: space-between;
-    padding: 0 5%; height: 68px;
-    box-shadow: 0 2px 32px rgba(74,63,53,0.08);
+    padding: 0 5%; height: 70px;
+    box-shadow: 0 2px 24px rgba(0,0,0,0.5);
   }
-  .nav-logo { display: flex; flex-direction: column; line-height: 1.2; }
-  .nav-logo-main { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: var(--dark); letter-spacing: 1px; }
-  .nav-logo-main em { font-style: italic; color: var(--gold); }
-  .nav-logo-sub { font-size: 10px; color: var(--muted); letter-spacing: 3px; text-transform: uppercase; font-weight: 300; }
-  .nav-center { display: flex; gap: 36px; }
-  .nav-center a { color: var(--muted); text-decoration: none; font-size: 11px; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; transition: color 0.2s; }
-  .nav-center a:hover { color: var(--gold); }
-  .nav-cta { background: var(--drape); color: var(--ivory); font-size: 10px; font-weight: 400; padding: 10px 24px; letter-spacing: 2px; text-decoration: none; text-transform: uppercase; transition: all 0.3s; border: 1px solid var(--drape); }
-  .nav-cta:hover { background: transparent; color: var(--drape); }
+  .nav-logo-main { font-family: 'Barlow Condensed', sans-serif; font-size: 20px; font-weight: 900; color: #fff; text-transform: uppercase; letter-spacing: 1px; line-height: 1.1; }
+  .nav-logo-main span { color: var(--green-light); }
+  .nav-logo-sub { font-size: 10px; color: rgba(255,255,255,0.4); letter-spacing: 2px; text-transform: uppercase; }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 12px; font-weight: 600; transition: color 0.2s; text-transform: uppercase; letter-spacing: 0.5px; }
+  .nav-links a:hover { color: var(--green-light); }
+  .nav-right { display: flex; align-items: center; gap: 16px; }
+  .nav-phone { font-size: 14px; font-weight: 700; color: rgba(255,255,255,0.8); text-decoration: none; }
+  .nav-cta { background: var(--orange); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 700; padding: 10px 22px; text-decoration: none; transition: all 0.2s; letter-spacing: 1.5px; text-transform: uppercase; border-radius: 4px; white-space: nowrap; }
+  .nav-cta:hover { background: var(--orange-light); transform: translateY(-1px); }
 
-  /* HERO — fabric drape aesthetic */
+  /* HERO */
   .hero {
     min-height: 100vh; position: relative; overflow: hidden;
     display: flex; align-items: center;
     background: var(--dark);
-    padding: 88px 6% 60px;
   }
-  /* Fabric texture bg */
-  .hero-fabric {
+  .hero-bg {
     position: absolute; inset: 0;
-    background:
-      repeating-linear-gradient(
-        180deg,
-        rgba(255,255,255,0.015) 0px,
-        rgba(255,255,255,0.015) 1px,
-        transparent 1px,
-        transparent 8px
-      ),
-      linear-gradient(145deg, #1e1a16 0%, #2a2218 40%, #1a1610 100%);
+    background: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1800&q=80') center/cover no-repeat;
+    opacity: 0.15;
   }
-  /* Draped fabric shapes on sides */
-  .hero-drape-l {
-    position: absolute; top: 0; left: 0; width: 200px; height: 100%;
-    background: linear-gradient(90deg, rgba(74,63,53,0.6) 0%, rgba(74,63,53,0.25) 50%, transparent 100%);
-    clip-path: polygon(0 0, 100% 0, 80% 20%, 95% 40%, 75% 60%, 90% 80%, 70% 100%, 0 100%);
-  }
-  .hero-drape-r {
-    position: absolute; top: 0; right: 0; width: 200px; height: 100%;
-    background: linear-gradient(270deg, rgba(74,63,53,0.6) 0%, rgba(74,63,53,0.25) 50%, transparent 100%);
-    clip-path: polygon(100% 0, 0 0, 20% 20%, 5% 40%, 25% 60%, 10% 80%, 30% 100%, 100% 100%);
-  }
-  /* Gold tie-backs */
-  .hero-tieback-l {
-    position: absolute; left: 140px; top: 55%;
-    width: 50px; height: 20px;
-    background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
-    border-radius: 50%;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-    opacity: 0.7;
-  }
-  .hero-tieback-r {
-    position: absolute; right: 140px; top: 55%;
-    width: 50px; height: 20px;
-    background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
-    border-radius: 50%;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-    opacity: 0.7;
-  }
-  /* Gold fringe at bottom of drapes */
-  .hero-fringe {
-    position: absolute; bottom: 0; left: 0; right: 0; height: 6px;
-    background: repeating-linear-gradient(90deg, var(--gold) 0px, var(--gold) 3px, transparent 3px, transparent 8px);
-    opacity: 0.3;
-  }
-  .hero-content { position: relative; z-index: 2; max-width: 700px; }
-  .hero-overline { display: flex; align-items: center; gap: 16px; margin-bottom: 28px; }
-  .overline-bar { width: 40px; height: 1px; background: var(--gold); }
-  .overline-text { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); font-weight: 300; }
-  h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(48px, 7vw, 92px);
-    font-weight: 400; color: var(--ivory); line-height: 1.05;
-    letter-spacing: -0.5px; margin-bottom: 28px;
-  }
-  h1 em { font-style: italic; color: var(--gold-light); }
-  .hero-sub { font-size: 14px; color: rgba(248,244,238,0.5); font-weight: 300; max-width: 480px; line-height: 2; margin-bottom: 48px; letter-spacing: 0.5px; }
-  .hero-divider { width: 60px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); margin-bottom: 36px; }
-  .hero-actions { display: flex; align-items: center; gap: 32px; margin-bottom: 72px; }
-  .btn-gold { background: var(--gold); color: var(--dark); font-size: 10px; font-weight: 400; padding: 16px 40px; letter-spacing: 3px; text-decoration: none; text-transform: uppercase; transition: all 0.4s; border: 1px solid var(--gold); display: inline-block; }
-  .btn-gold:hover { background: transparent; color: var(--gold); }
-  .hero-link { color: rgba(248,244,238,0.4); font-size: 11px; text-decoration: none; letter-spacing: 2px; text-transform: uppercase; display: flex; align-items: center; gap: 10px; transition: color 0.2s; }
-  .hero-link:hover { color: var(--ivory); }
-  .hero-stats { display: flex; gap: 0; border-top: 1px solid rgba(184,150,90,0.2); padding-top: 40px; }
-  .hstat { padding-right: 48px; border-right: 1px solid rgba(184,150,90,0.15); margin-right: 48px; }
-  .hstat:last-child { border: none; margin: 0; padding: 0; }
-  .hstat-num { font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 400; color: var(--ivory); line-height: 1; }
-  .hstat-num span { color: var(--gold); font-size: 18px; }
-  .hstat-label { font-size: 10px; color: rgba(248,244,238,0.3); letter-spacing: 2px; text-transform: uppercase; margin-top: 6px; font-weight: 300; }
+  .hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(14,18,8,0.97) 0%, rgba(14,18,8,0.8) 50%, rgba(14,18,8,0.5) 100%); }
+  .hero-green-glow { position: absolute; top: -100px; right: -100px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(58,125,30,0.15) 0%, transparent 65%); pointer-events: none; }
+  .hero-wave { position: absolute; bottom: -2px; left: 0; right: 0; z-index: 2; }
+  .hero-wave svg { display: block; width: 100%; }
+  .hero-inner { position: relative; z-index: 3; padding: 90px 5% 80px; width: 100%; display: grid; grid-template-columns: 1fr 320px; gap: 60px; align-items: center; }
+  .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; background: rgba(58,125,30,0.15); border: 1px solid rgba(58,125,30,0.4); color: var(--green-light); font-size: 11px; font-weight: 700; padding: 5px 14px; margin-bottom: 20px; letter-spacing: 2px; text-transform: uppercase; }
+  .edot { width: 6px; height: 6px; border-radius: 50%; background: var(--green-light); animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+  h1 { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(52px, 8vw, 100px); font-weight: 900; color: #fff; line-height: 0.92; letter-spacing: -1px; margin-bottom: 24px; text-transform: uppercase; text-shadow: 0 2px 20px rgba(0,0,0,0.4); }
+  h1 .green { color: var(--green-light); }
+  h1 .orange { color: var(--orange); }
+  .hero-sub { font-size: 16px; color: rgba(255,255,255,0.62); max-width: 520px; line-height: 1.8; margin-bottom: 36px; font-weight: 400; }
+  .hero-pills { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 36px; }
+  .hero-pill { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.8); font-size: 11px; font-weight: 600; padding: 5px 14px; }
+  .hero-pill.gr { background: rgba(58,125,30,0.12); border-color: rgba(58,125,30,0.35); color: var(--green-light); }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 52px; }
+  .btn-orange { background: var(--orange); color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 700; padding: 16px 40px; text-decoration: none; transition: all 0.2s; display: inline-flex; align-items: center; gap: 8px; letter-spacing: 2px; text-transform: uppercase; box-shadow: 0 6px 20px rgba(224,112,32,0.35); border-radius: 4px; }
+  .btn-orange:hover { background: var(--orange-light); transform: translateY(-2px); }
+  .btn-outline { background: transparent; color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 14px; font-weight: 600; padding: 14px 28px; text-decoration: none; border: 2px solid rgba(255,255,255,0.25); transition: all 0.2s; letter-spacing: 1.5px; text-transform: uppercase; border-radius: 4px; }
+  .btn-outline:hover { border-color: var(--green-light); color: var(--green-light); }
 
-  /* GOLD DIVIDER */
-  .divider { display: flex; align-items: center; gap: 20px; padding: 0 6%; margin: 0; }
-  .divider-line { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--silk), transparent); }
-  .divider-ornament { font-family: 'Playfair Display', serif; font-size: 18px; color: var(--gold); opacity: 0.5; }
+  /* HERO CARD */
+  .hero-card { background: rgba(14,18,8,0.85); backdrop-filter: blur(16px); border: 1px solid rgba(58,125,30,0.25); border-top: 3px solid var(--green-light); padding: 36px 32px; }
+  .hero-card-label { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; color: var(--green-light); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 24px; font-weight: 700; }
+  .hstat { padding: 18px 0; border-bottom: 1px solid rgba(255,255,255,0.07); display: flex; align-items: flex-end; gap: 12px; }
+  .hstat:last-child { border: none; padding-bottom: 0; }
+  .hstat-num { font-family: 'Barlow Condensed', sans-serif; font-size: 46px; font-weight: 900; color: #fff; line-height: 1; letter-spacing: -1px; }
+  .hstat-num span { color: var(--green-light); font-size: 20px; }
+  .hstat-label { font-size: 11px; color: rgba(255,255,255,0.4); letter-spacing: 1px; text-transform: uppercase; line-height: 1.4; padding-bottom: 7px; font-weight: 500; }
+  .sam-badge { margin-top: 20px; padding: 16px; background: rgba(224,112,32,0.1); border: 1px solid rgba(224,112,32,0.25); }
+  .sam-title { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; color: var(--orange-light); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px; font-weight: 700; }
+  .sam-text { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.6; font-weight: 300; }
+
+  /* TICKER */
+  .ticker { background: var(--green); padding: 13px 0; overflow: hidden; }
+  .ticker-track { display: flex; animation: scroll 24s linear infinite; white-space: nowrap; }
+  @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .ticker-item { font-family: 'Barlow Condensed', sans-serif; font-size: 14px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.9); padding: 0 28px; display: flex; align-items: center; gap: 14px; }
+  .tdot { width: 4px; height: 4px; border-radius: 50%; background: rgba(255,255,255,0.5); }
 
   /* SECTIONS */
-  section { padding: 96px 6%; }
-  .s-overline { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
-  .s-bar { width: 24px; height: 1px; background: var(--gold); }
-  .s-tag { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); font-weight: 300; }
-  .s-title { font-family: 'Playfair Display', serif; font-size: clamp(32px, 4vw, 50px); font-weight: 400; color: var(--dark); letter-spacing: -0.3px; line-height: 1.15; margin-bottom: 16px; }
-  .s-title em { font-style: italic; color: var(--taupe); }
-  .s-sub { color: var(--muted); font-size: 14px; max-width: 500px; line-height: 2; margin-bottom: 56px; font-weight: 300; letter-spacing: 0.3px; }
+  section { padding: 90px 5%; }
+  .stag { display: inline-flex; align-items: center; gap: 8px; background: rgba(58,125,30,0.08); border-left: 3px solid var(--green-light); color: var(--green); font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 700; padding: 5px 14px; margin-bottom: 16px; letter-spacing: 2px; text-transform: uppercase; }
+  .stitle { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(34px, 5vw, 56px); font-weight: 900; color: var(--text); letter-spacing: -0.5px; line-height: 0.95; margin-bottom: 14px; text-transform: uppercase; }
+  .stitle .gr { color: var(--green); }
+  .stitle .or { color: var(--orange); }
+  .ssub { color: var(--muted); font-size: 15px; max-width: 520px; line-height: 1.8; margin-bottom: 52px; font-weight: 400; }
 
-  /* SERVICES — fabric swatch grid */
-  .services-bg { background: var(--linen); }
-  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--silk); }
-  .svc {
-    background: var(--ivory); padding: 44px 36px;
-    transition: all 0.4s; position: relative; overflow: hidden;
-  }
-  /* Subtle fabric fold line */
-  .svc::before {
-    content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 3px;
-    background: linear-gradient(180deg, transparent, var(--gold), transparent);
-    opacity: 0; transition: opacity 0.4s;
-  }
-  .svc:hover { background: var(--cream); }
-  .svc:hover::before { opacity: 0.6; }
-  .svc-num { font-family: 'Playfair Display', serif; font-size: 11px; color: var(--gold); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 20px; font-weight: 400; }
-  .svc-icon { font-size: 28px; margin-bottom: 16px; opacity: 0.85; }
-  .svc-name { font-family: 'Playfair Display', serif; font-size: 21px; font-weight: 400; color: var(--dark); margin-bottom: 12px; line-height: 1.2; }
-  .svc-desc { font-size: 13px; color: var(--muted); line-height: 1.85; font-weight: 300; letter-spacing: 0.2px; }
+  /* SERVICES */
+  .services-bg { background: var(--sand); }
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 2px; background: rgba(0,0,0,0.06); }
+  .svc { background: var(--cream); padding: 36px 30px; transition: all 0.25s; position: relative; overflow: hidden; border-top: 3px solid transparent; }
+  .svc:hover { background: #fff; border-top-color: var(--green-light); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(58,125,30,0.1); }
+  .svc-num { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; color: var(--green-light); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 16px; font-weight: 700; }
+  .svc-icon { font-size: 30px; margin-bottom: 14px; }
+  .svc-name { font-family: 'Barlow Condensed', sans-serif; font-size: 22px; font-weight: 700; color: var(--text); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.5px; line-height: 1.1; }
+  .svc-desc { font-size: 13px; color: var(--muted); line-height: 1.7; font-weight: 400; }
 
-  /* ABOUT — rich dark panel */
-  .about-bg { background: var(--dark); position: relative; overflow: hidden; }
-  /* Fabric weave texture */
-  .about-bg::before {
-    content: '';
-    position: absolute; inset: 0;
-    background:
-      repeating-linear-gradient(0deg, rgba(255,255,255,0.012) 0px, rgba(255,255,255,0.012) 1px, transparent 1px, transparent 6px),
-      repeating-linear-gradient(90deg, rgba(255,255,255,0.008) 0px, rgba(255,255,255,0.008) 1px, transparent 1px, transparent 6px);
+  /* ABOUT */
+  .about-bg {
+    background: var(--dark); position: relative; overflow: hidden;
   }
-  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; position: relative; z-index: 1; }
-  .about-bg .s-title { color: var(--ivory); }
-  .about-bg .s-title em { color: var(--gold-light); }
-  .about-bg .s-sub { color: rgba(248,244,238,0.45); }
-  .about-card { border: 1px solid rgba(184,150,90,0.2); padding: 48px 44px; position: relative; }
-  /* Corner ornaments */
-  .about-card::before { content: '✦'; position: absolute; top: 14px; left: 18px; font-size: 12px; color: var(--gold); opacity: 0.4; }
-  .about-card::after { content: '✦'; position: absolute; bottom: 14px; right: 18px; font-size: 12px; color: var(--gold); opacity: 0.4; }
-  .about-card-title { font-family: 'Playfair Display', serif; font-size: 11px; color: var(--gold); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 28px; font-weight: 400; opacity: 0.8; }
-  .astat { display: flex; align-items: flex-start; gap: 20px; padding: 18px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .about-bg::before { content: ''; position: absolute; inset: 0; background-image: repeating-linear-gradient(90deg, rgba(255,255,255,0.012) 0px, rgba(255,255,255,0.012) 1px, transparent 1px, transparent 60px); }
+  .about-bg .stag { background: rgba(58,125,30,0.1); border-color: var(--green-light); color: var(--green-light); }
+  .about-bg .stitle { color: #fff; }
+  .about-bg .ssub { color: rgba(255,255,255,0.45); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; position: relative; z-index: 1; }
+  .reasons { display: flex; flex-direction: column; gap: 16px; }
+  .reason { display: flex; gap: 14px; align-items: flex-start; padding: 18px 20px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.07); transition: background 0.2s; }
+  .reason:hover { background: rgba(255,255,255,0.08); }
+  .reason-icon { font-size: 22px; min-width: 28px; }
+  .reason-title { font-family: 'Barlow Condensed', sans-serif; font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .reason-text { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.65; font-weight: 300; }
+  .about-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(58,125,30,0.25); border-top: 3px solid var(--green-light); padding: 44px 40px; }
+  .about-card-title { font-family: 'Barlow Condensed', sans-serif; font-size: 12px; color: var(--green-light); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 28px; font-weight: 700; }
+  .astat { display: flex; align-items: center; gap: 18px; padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
   .astat:last-child { border: none; }
-  .astat-num { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 400; color: var(--ivory); min-width: 80px; line-height: 1; }
-  .astat-num span { color: var(--gold); font-size: 16px; }
-  .astat-label { font-size: 12px; color: rgba(248,244,238,0.4); line-height: 1.6; font-weight: 300; letter-spacing: 0.3px; }
-  .values { display: flex; flex-direction: column; }
-  .val { display: flex; gap: 20px; padding: 22px 0; border-bottom: 1px solid rgba(184,150,90,0.1); align-items: flex-start; }
-  .val:first-child { padding-top: 0; }
-  .val:last-child { border: none; }
-  .val-num { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 400; color: var(--gold); opacity: 0.35; line-height: 1; min-width: 28px; }
-  .val-title { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 400; color: var(--ivory); margin-bottom: 6px; }
-  .val-text { font-size: 13px; color: rgba(248,244,238,0.38); line-height: 1.8; font-weight: 300; }
+  .astat-num { font-family: 'Barlow Condensed', sans-serif; font-size: 28px; font-weight: 800; color: #fff; min-width: 80px; line-height: 1; letter-spacing: -0.5px; }
+  .astat-num span { color: var(--green-light); }
+  .astat-label { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.5; font-weight: 400; }
+  .austin-badge { margin-top: 20px; padding: 16px; background: rgba(224,112,32,0.1); border: 1px solid rgba(224,112,32,0.25); }
+  .austin-title { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; color: var(--orange-light); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; font-weight: 700; }
+  .austin-text { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.65; font-style: italic; }
 
   /* REVIEWS */
-  .reviews-bg { background: var(--ivory); }
-  .reviews-header { display: flex; align-items: flex-end; gap: 32px; margin-bottom: 52px; }
-  .score-num { font-family: 'Playfair Display', serif; font-size: 80px; font-weight: 400; color: var(--dark); line-height: 1; letter-spacing: -2px; }
-  .score-stars { color: var(--gold); font-size: 20px; letter-spacing: 4px; }
-  .score-label { font-size: 11px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; margin-top: 6px; font-weight: 300; }
-  .reviews-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; background: var(--silk); }
-  .review-card { background: var(--ivory); padding: 40px 44px; position: relative; }
-  .review-card::before { content: '\201C'; font-family: 'Playfair Display', serif; font-size: 80px; color: var(--gold); opacity: 0.12; position: absolute; top: 8px; left: 28px; line-height: 1; }
-  .review-stars { color: var(--gold); font-size: 13px; margin-bottom: 16px; letter-spacing: 2px; }
-  .review-text { font-family: 'Playfair Display', serif; font-size: 17px; font-style: italic; color: var(--dark); line-height: 1.8; margin-bottom: 24px; padding-left: 8px; font-weight: 400; }
-  .review-author { font-size: 12px; font-weight: 400; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; }
-  .review-meta { font-size: 11px; color: var(--muted); margin-top: 4px; font-weight: 300; letter-spacing: 0.5px; }
-
-  /* CONTACT */
-  .contact-bg { background: var(--linen); }
-  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
-  .form-wrap { background: var(--dark); padding: 52px 48px; position: relative; overflow: hidden; }
-  /* Fabric corner fold effect */
-  .form-wrap::after {
-    content: ''; position: absolute; top: 0; right: 0;
-    width: 48px; height: 48px;
-    background: linear-gradient(225deg, var(--gold) 0%, var(--gold) 50%, transparent 50%);
-    opacity: 0.3;
+  .reviews-bg {
+    position: relative; overflow: hidden;
+    background: url('https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=1800&q=80') center/cover no-repeat;
   }
-  .form-title { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 400; color: var(--ivory); margin-bottom: 6px; letter-spacing: 0.5px; }
-  .form-sub { font-size: 12px; color: rgba(248,244,238,0.35); margin-bottom: 32px; font-weight: 300; letter-spacing: 1px; }
-  .form-group { margin-bottom: 18px; }
-  .form-group label { display: block; font-size: 9px; font-weight: 400; color: rgba(248,244,238,0.3); margin-bottom: 8px; letter-spacing: 2.5px; text-transform: uppercase; }
-  .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 13px 16px; border: none; border-bottom: 1px solid rgba(255,255,255,0.1); background: transparent; font-family: 'Jost', sans-serif; font-size: 14px; color: var(--ivory); outline: none; transition: border-color 0.3s; }
-  .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(248,244,238,0.2); }
+  .reviews-overlay { position: absolute; inset: 0; background: linear-gradient(145deg, rgba(14,18,8,0.96), rgba(22,28,14,0.93)); }
+  .reviews-inner { position: relative; z-index: 1; }
+  .reviews-bg .stag { background: rgba(58,125,30,0.1); border-color: var(--green-light); color: var(--green-light); }
+  .reviews-bg .stitle { color: #fff; }
+  .reviews-top { display: flex; align-items: center; gap: 24px; margin-bottom: 40px; flex-wrap: wrap; }
+  .score-big { font-family: 'Barlow Condensed', sans-serif; font-size: 80px; font-weight: 900; color: #fff; line-height: 1; letter-spacing: -2px; }
+  .score-stars { color: var(--orange); font-size: 22px; letter-spacing: 2px; }
+  .score-label { font-size: 12px; color: rgba(255,255,255,0.5); font-weight: 600; margin-top: 4px; letter-spacing: 0.5px; }
+  .reviews-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+  .review-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); padding: 28px; border-top: 3px solid transparent; transition: border-top-color 0.2s; }
+  .review-card:hover { border-top-color: var(--green-light); }
+  .review-stars { color: var(--orange); font-size: 14px; margin-bottom: 12px; letter-spacing: 1px; }
+  .review-text { font-size: 14px; color: rgba(255,255,255,0.88); line-height: 1.75; margin-bottom: 16px; font-style: italic; }
+  .review-name { font-family: 'Barlow Condensed', sans-serif; font-size: 14px; font-weight: 700; color: var(--green-light); letter-spacing: 1px; text-transform: uppercase; }
+  .review-meta { font-size: 12px; color: rgba(255,255,255,0.35); margin-top: 3px; }
+
+  /* BOOKING */
+  .booking-bg { background: var(--cream); position: relative; overflow: hidden; }
+  .booking-bg::before { content: ''; position: absolute; top: -60px; right: -60px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(58,125,30,0.06) 0%, transparent 70%); }
+  .booking-layout { display: grid; grid-template-columns: 1fr 1.1fr; gap: 60px; align-items: start; position: relative; z-index: 1; }
+  .form-card { background: var(--dark); border-top: 3px solid var(--green-light); padding: 48px 44px; box-shadow: 0 24px 64px rgba(0,0,0,0.2); }
+  .form-title { font-family: 'Barlow Condensed', sans-serif; font-size: 26px; font-weight: 800; color: #fff; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 1px; }
+  .form-sub { font-size: 13px; color: rgba(255,255,255,0.4); margin-bottom: 28px; font-weight: 300; }
+  .form-group { margin-bottom: 16px; }
+  .form-group label { display: block; font-size: 10px; font-weight: 600; color: rgba(255,255,255,0.4); margin-bottom: 6px; letter-spacing: 2px; text-transform: uppercase; }
+  .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 13px 14px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.05); font-family: 'Barlow', sans-serif; font-size: 14px; color: #fff; outline: none; transition: border-color 0.2s; border-radius: 4px; }
   .form-group select option { background: var(--dark); }
-  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-bottom-color: var(--gold); }
-  .form-group textarea { resize: vertical; min-height: 96px; }
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-  .form-submit { width: 100%; background: var(--gold); color: var(--dark); border: none; padding: 16px; font-size: 10px; font-weight: 400; font-family: 'Jost', sans-serif; cursor: pointer; letter-spacing: 3px; text-transform: uppercase; transition: all 0.4s; margin-top: 12px; border: 1px solid var(--gold); }
-  .form-submit:hover { background: transparent; color: var(--gold); }
+  .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,0.22); }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--green-light); background: rgba(255,255,255,0.08); }
+  .form-group textarea { resize: vertical; min-height: 90px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .form-submit { width: 100%; background: var(--orange); color: #fff; border: none; padding: 16px; font-family: 'Barlow Condensed', sans-serif; font-size: 16px; font-weight: 700; cursor: pointer; letter-spacing: 2.5px; text-transform: uppercase; transition: all 0.2s; margin-top: 8px; border-radius: 4px; }
+  .form-submit:hover { background: var(--orange-light); transform: translateY(-1px); }
   .contact-info { padding-top: 8px; }
-  .contact-title { font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 400; color: var(--dark); line-height: 1.15; margin-bottom: 12px; letter-spacing: -0.3px; }
-  .contact-title em { font-style: italic; color: var(--taupe); }
-  .contact-sub { font-size: 14px; color: var(--muted); line-height: 2; margin-bottom: 44px; font-weight: 300; letter-spacing: 0.3px; }
+  .contact-title { font-family: 'Barlow Condensed', sans-serif; font-size: 44px; font-weight: 900; color: var(--text); line-height: 0.95; margin-bottom: 16px; text-transform: uppercase; letter-spacing: -0.5px; }
+  .contact-title .gr { color: var(--green); }
+  .contact-sub { font-size: 15px; color: var(--muted); line-height: 1.8; margin-bottom: 36px; font-weight: 400; }
   .clist { display: flex; flex-direction: column; }
-  .citem { display: flex; gap: 20px; padding: 22px 0; border-bottom: 1px solid var(--border); align-items: flex-start; }
+  .citem { display: flex; gap: 16px; padding: 18px 0; border-bottom: 1px solid var(--border); align-items: flex-start; }
   .citem:first-child { padding-top: 0; }
   .citem:last-child { border: none; }
-  .cicon { font-size: 16px; min-width: 22px; margin-top: 2px; opacity: 0.7; }
-  .clabel { font-size: 9px; font-weight: 400; letter-spacing: 2.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 5px; }
-  .cval { font-size: 15px; font-weight: 400; color: var(--dark); }
-  .cnote { font-size: 12px; color: var(--muted); margin-top: 3px; font-weight: 300; letter-spacing: 0.3px; }
-  .open-tag { display: inline-flex; align-items: center; gap: 6px; margin-top: 6px; background: transparent; border: 1px solid rgba(184,150,90,0.4); color: var(--gold); font-size: 10px; font-weight: 400; padding: 4px 12px; letter-spacing: 1.5px; text-transform: uppercase; }
-  .open-tag::before { content: '●'; font-size: 6px; animation: blink 2s infinite; }
-  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+  .cicon { font-size: 20px; min-width: 26px; margin-top: 2px; }
+  .clabel { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+  .cval { font-size: 15px; font-weight: 600; color: var(--text); }
+  .cnote { font-size: 13px; color: var(--muted); margin-top: 2px; font-weight: 400; }
+  .open-pill { display: inline-flex; align-items: center; gap: 6px; margin-top: 6px; background: var(--green-pale); border: 1px solid rgba(58,125,30,0.3); color: var(--green); font-size: 11px; font-weight: 700; padding: 4px 12px; letter-spacing: 1px; text-transform: uppercase; }
+  .open-pill::before { content: '●'; font-size: 7px; animation: pulse 2s infinite; }
 
   /* FOOTER */
-  footer { background: var(--dark); padding: 52px 6% 40px; position: relative; overflow: hidden; }
-  footer::before {
-    content: '';
-    position: absolute; top: 0; left: 0; right: 0; height: 1px;
-    background: linear-gradient(90deg, transparent, var(--gold), transparent);
-    opacity: 0.3;
-  }
-  .footer-top { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 40px; padding-bottom: 44px; border-bottom: 1px solid rgba(255,255,255,0.05); margin-bottom: 32px; }
-  .footer-brand { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 400; color: rgba(248,244,238,0.6); margin-bottom: 6px; letter-spacing: 1px; }
-  .footer-brand em { font-style: italic; color: var(--gold); }
-  .footer-brand-sub { font-size: 9px; color: rgba(248,244,238,0.2); letter-spacing: 3px; text-transform: uppercase; font-weight: 300; }
+  footer { background: var(--dark); padding: 48px 5% 32px; border-top: 3px solid var(--green-light); }
+  .footer-top { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 32px; padding-bottom: 36px; border-bottom: 1px solid rgba(255,255,255,0.07); margin-bottom: 28px; }
+  .footer-brand { font-family: 'Barlow Condensed', sans-serif; font-size: 20px; font-weight: 900; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+  .footer-brand span { color: var(--green-light); }
+  .footer-brand-sub { font-size: 10px; color: rgba(255,255,255,0.28); letter-spacing: 2px; text-transform: uppercase; }
   .footer-col { display: flex; flex-direction: column; gap: 10px; }
-  .footer-col-title { font-size: 9px; font-weight: 400; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; opacity: 0.7; }
-  .footer-col a { font-size: 13px; color: rgba(248,244,238,0.28); text-decoration: none; font-weight: 300; letter-spacing: 0.5px; transition: color 0.2s; }
-  .footer-col a:hover { color: rgba(248,244,238,0.7); }
-  .footer-bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; align-items: center; }
-  .footer-copy { font-size: 11px; color: rgba(248,244,238,0.15); font-weight: 300; letter-spacing: 0.5px; }
-  .footer-tagline { font-family: 'Playfair Display', serif; font-size: 13px; font-style: italic; color: var(--gold); opacity: 0.35; }
+  .footer-col-title { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--green-light); margin-bottom: 4px; }
+  .footer-col a { font-size: 13px; color: rgba(255,255,255,0.3); text-decoration: none; transition: color 0.2s; font-weight: 400; }
+  .footer-col a:hover { color: rgba(255,255,255,0.8); }
+  .footer-bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+  .footer-copy { font-size: 12px; color: rgba(255,255,255,0.18); }
+  .footer-tag { font-family: 'Barlow Condensed', sans-serif; font-size: 14px; font-weight: 700; color: var(--green-light); opacity: 0.4; letter-spacing: 2px; text-transform: uppercase; }
 
   @media (max-width: 960px) {
-    .services-grid { grid-template-columns: repeat(2, 1fr); }
-    .about-grid, .contact-grid { grid-template-columns: 1fr; }
-    .nav-center { display: none; }
+    .hero-inner, .about-grid, .booking-layout { grid-template-columns: 1fr; }
+    .hero-card { display: none; }
+    .nav-links { display: none; }
     .form-row { grid-template-columns: 1fr; }
-    .reviews-grid { grid-template-columns: 1fr; }
-    .curtain-left, .curtain-right, .curtain-rod { display: none; }
-    nav { left: 0; right: 0; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
   }
   @media (max-width: 560px) {
     .services-grid { grid-template-columns: 1fr; }
-    .hero-stats { flex-direction: column; gap: 20px; }
-    .hstat { border: none; padding: 0; margin: 0; }
   }
 </style>
 </head>
 <body>
 
-<!-- CURTAIN EFFECT -->
-<div class="curtain-rod"></div>
-<div class="curtain-left"></div>
-<div class="curtain-right"></div>
-
 <nav>
-  <div class="nav-logo">
-    <div class="nav-logo-main">Somers <em>Drapery</em></div>
-    <div class="nav-logo-sub">Sarasota, Florida · Est. Specialists</div>
+  <div>
+    <div class="nav-logo-main">Sam's <span>Grapple Truck</span></div>
+    <div class="nav-logo-sub">Sarasota, FL · Debris Removal</div>
   </div>
-  <div class="nav-center">
+  <div class="nav-links">
     <a href="#services">Services</a>
     <a href="#about">About</a>
     <a href="#reviews">Reviews</a>
-    <a href="#contact">Contact</a>
+    <a href="#booking">Contact</a>
   </div>
-  <a href="tel:9419557877" class="nav-cta">Call Us</a>
+  <div class="nav-right">
+    <a href="tel:9418798853" class="nav-phone">(941) 879-8853</a>
+    <a href="#booking" class="nav-cta">Free Quote</a>
+  </div>
 </nav>
 
 <!-- HERO -->
-<section class="hero">
-  <div class="hero-fabric"></div>
-  <div class="hero-drape-l"></div>
-  <div class="hero-drape-r"></div>
-  <div class="hero-tieback-l"></div>
-  <div class="hero-tieback-r"></div>
-  <div class="hero-fringe"></div>
-  <div class="hero-content">
-    <div class="hero-overline">
-      <div class="overline-bar"></div>
-      <div class="overline-text">Sarasota's Drapery & Cleaning Specialists</div>
-    </div>
-    <h1>The Art of<br><em>Immaculate</em><br>Drapes.</h1>
-    <div class="hero-divider"></div>
-    <p class="hero-sub">Somers Drapery brings expert cleaning and care to your most precious soft furnishings — draperies, blinds, area rugs, and outdoor fabric — with the delicacy each piece deserves.</p>
-    <div class="hero-actions">
-      <a href="#contact" class="btn-gold">Schedule a Service</a>
-      <a href="#services" class="hero-link">Explore Services →</a>
-    </div>
-    <div class="hero-stats">
-      <div class="hstat">
-        <div class="hstat-num">4.0<span>★</span></div>
-        <div class="hstat-label">Google Rated</div>
+<section class="hero" style="padding:0;">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-green-glow"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow"><div class="edot"></div> Sarasota's Grapple Truck Specialists</div>
+      <h1>Heavy Debris.<br><span class="green">Gone Fast.</span><br><span class="orange">Same Day.</span></h1>
+      <p class="hero-sub">Sam's Grapple Truck Service handles the toughest debris removal jobs in Sarasota. Professional, fast, and dependable — Sam and Austin show up and get it done right.</p>
+      <div class="hero-pills">
+        <div class="hero-pill gr">⭐ 4.5 · 4 Reviews</div>
+        <div class="hero-pill">📍 Sarasota, FL</div>
+        <div class="hero-pill">⚡ Same-Day Service</div>
+        <div class="hero-pill">🚛 Grapple Truck Equipped</div>
       </div>
-      <div class="hstat">
-        <div class="hstat-num">Years</div>
-        <div class="hstat-label">In Business</div>
+      <div class="hero-btns">
+        <a href="#booking" class="btn-orange">🚛 Get a Free Quote</a>
+        <a href="tel:9418798853" class="btn-outline">📞 (941) 879-8853</a>
       </div>
-      <div class="hstat">
-        <div class="hstat-num">Care</div>
-        <div class="hstat-label">Every Fabric</div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-label">At a Glance</div>
+      <div class="hstat"><div class="hstat-num">4.5<span>★</span></div><div class="hstat-label">Google Rating</div></div>
+      <div class="hstat"><div class="hstat-num">Same<span> day</span></div><div class="hstat-label">Service Available</div></div>
+      <div class="hstat"><div class="hstat-num">Free</div><div class="hstat-label">Estimates Always</div></div>
+      <div class="sam-badge">
+        <div class="sam-title">🚛 Grapple Truck Ready</div>
+        <div class="sam-text">Equipped with a grapple truck for heavy debris removal — the jobs other companies can't handle.</div>
       </div>
     </div>
   </div>
+  <div class="hero-wave">
+    <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#3a7d1e" d="M0,48L60,42C120,37,240,26,360,28C480,30,600,44,720,50C840,55,960,51,1080,44C1200,37,1320,26,1380,21L1440,16L1440,80L0,80Z"/>
+    </svg>
+  </div>
 </section>
 
-<div class="divider"><div class="divider-line"></div><div class="divider-ornament">✦</div><div class="divider-line"></div></div>
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="ticker-item">Grapple Truck Service <span class="tdot"></span></span>
+    <span class="ticker-item">Debris Removal <span class="tdot"></span></span>
+    <span class="ticker-item">Same-Day Available <span class="tdot"></span></span>
+    <span class="ticker-item">Tree & Storm Debris <span class="tdot"></span></span>
+    <span class="ticker-item">Yard Waste Removal <span class="tdot"></span></span>
+    <span class="ticker-item">Junk Hauling <span class="tdot"></span></span>
+    <span class="ticker-item">4.5 Stars · Sarasota FL <span class="tdot"></span></span>
+    <span class="ticker-item">Free Estimates <span class="tdot"></span></span>
+    <span class="ticker-item">Grapple Truck Service <span class="tdot"></span></span>
+    <span class="ticker-item">Debris Removal <span class="tdot"></span></span>
+    <span class="ticker-item">Same-Day Available <span class="tdot"></span></span>
+    <span class="ticker-item">Tree & Storm Debris <span class="tdot"></span></span>
+    <span class="ticker-item">Yard Waste Removal <span class="tdot"></span></span>
+    <span class="ticker-item">Junk Hauling <span class="tdot"></span></span>
+    <span class="ticker-item">4.5 Stars · Sarasota FL <span class="tdot"></span></span>
+    <span class="ticker-item">Free Estimates <span class="tdot"></span></span>
+  </div>
+</div>
 
 <!-- SERVICES -->
 <section class="services-bg" id="services">
-  <div class="s-overline"><div class="s-bar"></div><div class="s-tag">Our Specialties</div></div>
-  <div class="s-title">Expert Care for<br><em>Every Fabric.</em></div>
-  <p class="s-sub">From delicate silk draperies to outdoor furniture cushions — Somers brings decades of specialist expertise to every piece entrusted to our care.</p>
+  <div class="stag">What We Do</div>
+  <div class="stitle">Every <span class="gr">Debris</span><br>Job Handled.</div>
+  <p class="ssub">From storm cleanup to large-scale yard waste removal — Sam's Grapple Truck handles the heavy jobs other companies won't touch. Fast, professional, and same-day available.</p>
   <div class="services-grid">
-    <div class="svc">
-      <div class="svc-num">I — Drapery</div>
-      <div class="svc-icon">🪟</div>
-      <div class="svc-name">Drapery & Curtain Cleaning</div>
-      <div class="svc-desc">Professional cleaning of draperies and curtains of all fabrics and styles. We understand that your drapes are an investment — our process protects color, texture, and structure through every clean.</div>
-    </div>
-    <div class="svc">
-      <div class="svc-num">II — Blinds</div>
-      <div class="svc-icon">🔲</div>
-      <div class="svc-name">Blind Cleaning</div>
-      <div class="svc-desc">Specialist cleaning for all blind types including Hunter Douglas and other premium brands. Meticulous attention to each slat — restoring them to like-new condition without damage.</div>
-    </div>
-    <div class="svc">
-      <div class="svc-num">III — Rugs</div>
-      <div class="svc-icon">🏡</div>
-      <div class="svc-name">Area Rug Cleaning</div>
-      <div class="svc-desc">Deep cleaning of area rugs with care for delicate fibers, dyes, and construction. Customers describe results that leave them extremely happy — rugs restored to their original beauty.</div>
-    </div>
-    <div class="svc">
-      <div class="svc-num">IV — Outdoor</div>
-      <div class="svc-icon">☀️</div>
-      <div class="svc-name">Outdoor Furniture & Cushions</div>
-      <div class="svc-desc">Thorough cleaning of outdoor furniture, cushions, and pillows — without rushing through the process. Results so clean customers say they look like new.</div>
-    </div>
-    <div class="svc">
-      <div class="svc-num">V — Upholstery</div>
-      <div class="svc-icon">🛋️</div>
-      <div class="svc-name">Upholstery Cleaning</div>
-      <div class="svc-desc">Careful cleaning of upholstered furniture with fabric-appropriate methods. We treat every piece with the same respect we'd give our own.</div>
-    </div>
-    <div class="svc">
-      <div class="svc-num">VI — Pickup</div>
-      <div class="svc-icon">🚛</div>
-      <div class="svc-name">Pickup & Delivery</div>
-      <div class="svc-desc">We come to you — arriving on time, working thoroughly, and treating your home and furnishings with care and professionalism from start to finish.</div>
-    </div>
+    <div class="svc"><div class="svc-num">01 — Specialty</div><div class="svc-icon">🚛</div><div class="svc-name">Grapple Truck Service</div><div class="svc-desc">The specialty that sets Sam apart. Our grapple truck can grab and haul heavy debris, brush piles, and storm waste that standard trucks can't handle.</div></div>
+    <div class="svc"><div class="svc-num">02 — Storm</div><div class="svc-icon">🌪️</div><div class="svc-name">Storm & Hurricane Cleanup</div><div class="svc-desc">Fast storm debris removal after Florida's hurricanes and tropical storms. We clear downed trees, branches, and debris quickly so you can get back to normal.</div></div>
+    <div class="svc"><div class="svc-num">03 — Trees</div><div class="svc-icon">🌳</div><div class="svc-name">Tree & Brush Removal</div><div class="svc-desc">Removal of felled trees, large branches, and brush piles. The grapple truck makes short work of even the biggest piles of yard debris.</div></div>
+    <div class="svc"><div class="svc-num">04 — Yard</div><div class="svc-icon">🍂</div><div class="svc-name">Yard Waste Removal</div><div class="svc-desc">Grass clippings, leaves, branches, and yard waste hauled away fast. Same-day service available — one call and it's gone.</div></div>
+    <div class="svc"><div class="svc-num">05 — Junk</div><div class="svc-icon">🗑️</div><div class="svc-name">Junk & Debris Hauling</div><div class="svc-desc">Old furniture, construction debris, and general junk removed from your property. Professional, fast, and at a fair price every time.</div></div>
+    <div class="svc"><div class="svc-num">06 — Commercial</div><div class="svc-icon">🏢</div><div class="svc-name">Commercial Cleanup</div><div class="svc-desc">Large commercial and residential property cleanups. Sam and the crew handle volume jobs with the same speed and professionalism as every other job.</div></div>
   </div>
 </section>
-
-<div class="divider"><div class="divider-line"></div><div class="divider-ornament">✦</div><div class="divider-line"></div></div>
 
 <!-- ABOUT -->
 <section class="about-bg" id="about">
   <div class="about-grid">
     <div>
-      <div class="s-overline"><div class="s-bar"></div><div class="s-tag">Who We Are</div></div>
-      <div class="s-title">Trusted by Sarasota<br>for <em>Years.</em></div>
-      <p class="s-sub">Somers Drapery has been a trusted name in Sarasota's home care scene for years — building a loyal customer base through consistent quality, professionalism, and a genuine love for the craft.</p>
-      <div class="values">
-        <div class="val"><div class="val-num">I</div><div><div class="val-title">Delicate Care</div><div class="val-text">We understand that draperies and blinds are significant investments. Every piece is handled with the delicacy and expertise it deserves.</div></div></div>
-        <div class="val"><div class="val-num">II</div><div><div class="val-title">On Time, Every Time</div><div class="val-text">We arrive when we say we will and work thoroughly without rushing. Your time and your home are respected throughout every visit.</div></div></div>
-        <div class="val"><div class="val-num">III</div><div><div class="val-title">Long-Term Relationships</div><div class="val-text">Many of our customers have been with us for years. That kind of loyalty is only earned through consistent, trustworthy service.</div></div></div>
-        <div class="val"><div class="val-num">IV</div><div><div class="val-title">Specialist Knowledge</div><div class="val-text">Not all fabrics are the same. Our expertise across drapery, blinds, rugs, and outdoor fabrics ensures the right treatment every time.</div></div></div>
+      <div class="stag">About Sam's</div>
+      <div class="stitle">Fast, <span style="color:var(--green-light);">Professional,</span><br>Can Always Count On.</div>
+      <p class="ssub">Sam and his crew have built a reputation in Sarasota for showing up fast, working professionally, and getting the job done right. Austin handles jobs with speed and precision that earns repeat customers.</p>
+      <div class="reasons">
+        <div class="reason"><div class="reason-icon">⚡</div><div><div class="reason-title">Same-Day Service</div><div class="reason-text">Rene got same-day service and was blown away. When you need debris gone fast Sam's team delivers — no waiting around.</div></div></div>
+        <div class="reason"><div class="reason-icon">🚛</div><div><div class="reason-title">Grapple Truck Equipped</div><div class="reason-text">The grapple truck sets Sam apart from standard haulers. Heavy debris, large brush piles, storm waste — handled efficiently.</div></div></div>
+        <div class="reason"><div class="reason-icon">👷</div><div><div class="reason-title">Professional Every Time</div><div class="reason-text">Sam and Austin are professionals who take pride in their work. Customers recommend without hesitation and come back again.</div></div></div>
+        <div class="reason"><div class="reason-icon">⏱️</div><div><div class="reason-title">Respects Your Time</div><div class="reason-text">"Highly recommended to people who care about their Time!" — Aleksey. Sam's crew doesn't waste your time or drag out a job.</div></div></div>
       </div>
     </div>
     <div class="about-card">
-      <div class="about-card-title">Why Somers</div>
-      <div class="astat"><div class="astat-num">4.0<span>★</span></div><div class="astat-label">Google rating from Sarasota homeowners</div></div>
-      <div class="astat"><div class="astat-num">Years<span>+</span></div><div class="astat-label">Serving the Sarasota community</div></div>
-      <div class="astat"><div class="astat-num">All</div><div class="astat-label">Fabric types — drapery, blinds, rugs, outdoor</div></div>
-      <div class="astat"><div class="astat-num">On-site</div><div class="astat-label">We come to you — pickup & delivery included</div></div>
+      <div class="about-card-title">Sam's At a Glance</div>
+      <div class="astat"><div class="astat-num">4.5<span>★</span></div><div class="astat-label">Google rating from verified Sarasota customers</div></div>
+      <div class="astat"><div class="astat-num">Same<span> day</span></div><div class="astat-label">Service available — call Sam now</div></div>
+      <div class="astat"><div class="astat-num">Grapple</div><div class="astat-label">Truck equipped for heavy debris</div></div>
+      <div class="astat"><div class="astat-num">Free</div><div class="astat-label">Estimates on every job — no obligation</div></div>
+      <div class="austin-badge">
+        <div class="austin-title">⭐ "Kudos to you Austin, keep up the great work!"</div>
+        <div class="austin-text">— Rene Cain, Google Review</div>
+      </div>
     </div>
   </div>
 </section>
-
-<div class="divider"><div class="divider-line"></div><div class="divider-ornament">✦</div><div class="divider-line"></div></div>
 
 <!-- REVIEWS -->
 <section class="reviews-bg" id="reviews">
-  <div class="s-overline"><div class="s-bar"></div><div class="s-tag">Client Reviews</div></div>
-  <div class="s-title">What Our Customers<br><em>Are Saying.</em></div>
-  <div class="reviews-header">
-    <div class="score-num">4.0</div>
-    <div>
-      <div class="score-stars">★★★★☆</div>
-      <div style="font-family:'Playfair Display',serif; font-size:16px; color:var(--dark); margin-top:6px; font-weight:400;">10 Google Reviews</div>
-      <div class="score-label">Sarasota, FL · Verified</div>
+  <div class="reviews-overlay"></div>
+  <div class="reviews-inner">
+    <div class="stag">Reviews</div>
+    <div class="stitle" style="color:#fff;">What Sarasota <span style="color:var(--green-light);">Says.</span></div>
+    <div class="reviews-top">
+      <div class="score-big">4.5</div>
+      <div>
+        <div class="score-stars">★★★★½</div>
+        <div style="font-family:'Barlow Condensed',sans-serif; font-size:18px; font-weight:800; color:#fff; margin-top:4px; text-transform:uppercase; letter-spacing:1px;">4 Google Reviews</div>
+        <div class="score-label">Sarasota, FL · Verified</div>
+      </div>
     </div>
-  </div>
-  <div class="reviews-grid">
-    <div class="review-card">
-      <div class="review-stars">★★★★★</div>
-      <div class="review-text">"I am SO glad that I found Somers. My draperies were expensive and I didn't want to go to just any cleaners. They were wonderful. Great service and we are extremely happy with the drapes, blinds and area rug."</div>
-      <div class="review-author">Pat Girgenti</div>
-      <div class="review-meta">Google Review · 6 reviews · 6 years ago</div>
-    </div>
-    <div class="review-card">
-      <div class="review-stars">★★★★★</div>
-      <div class="review-text">"They arrived on time and immediately started cleaning the outdoor furniture and pillows, very thoroughly and without rushing through the cleaning process. The outdoor furniture and pillows are So Clean like New!"</div>
-      <div class="review-author">Paulomi Desai</div>
-      <div class="review-meta">Google Local Guide · 62 reviews · 5 years ago</div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">"I couldn't be more pleased. I was able to get same day service — WOW. Austin came and loaded up my residue, was professional and completed his task in short order. Kudos to you Austin, keep up the great work y'all!"</div>
+        <div class="review-name">Rene Cain</div>
+        <div class="review-meta">Google Review · 3 reviews · 1 year ago</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">"Highly recommended to people who care about their Time! Sam and his crew are professionals! You can always count on them! Absolutely a pleasure to do business with — Bravo Sam!"</div>
+        <div class="review-name">Aleksey Izmaylov</div>
+        <div class="review-meta">Google Local Guide · 18 reviews · 5 years ago</div>
+      </div>
+      <div class="review-card">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">"Responsive, professional, and got the job done. Positive experience all around — would recommend Sam's Grapple Truck Service to anyone in Sarasota who needs debris removed."</div>
+        <div class="review-name">William Vanderbent</div>
+        <div class="review-meta">Google Review · 1 review</div>
+      </div>
     </div>
   </div>
 </section>
 
-<div class="divider"><div class="divider-line"></div><div class="divider-ornament">✦</div><div class="divider-line"></div></div>
-
-<!-- CONTACT -->
-<section class="contact-bg" id="contact">
-  <div class="contact-grid">
+<!-- BOOKING -->
+<section class="booking-bg" id="booking">
+  <div class="booking-layout">
     <div class="contact-info">
-      <div class="s-overline"><div class="s-bar"></div><div class="s-tag">Get in Touch</div></div>
-      <div class="contact-title">Schedule a<br><em>Service.</em></div>
-      <div class="contact-sub">Fill out the form and we'll be in touch to arrange your service. Or call us directly during business hours — we're always happy to discuss your needs.</div>
+      <div class="stag">Get a Quote</div>
+      <div class="contact-title">NEED DEBRIS<br><span class="gr">GONE TODAY?</span></div>
+      <div class="contact-sub">Fill out the form and Sam will get back to you quickly with a free estimate. Same-day service available — call now.</div>
       <div class="clist">
-        <div class="citem">
-          <div class="cicon">📞</div>
-          <div>
-            <div class="clabel">Phone</div>
-            <div class="cval">(941) 955-7877</div>
-            <div class="cnote">Call during business hours</div>
-            <div class="open-tag">Open · Closes 4 PM</div>
-          </div>
-        </div>
-        <div class="citem">
-          <div class="cicon">📍</div>
-          <div>
-            <div class="clabel">Address</div>
-            <div class="cval">2029 Princeton St</div>
-            <div class="cnote">Sarasota, FL 34237 · Merchants Pointe Shopping Center</div>
-          </div>
-        </div>
-        <div class="citem">
-          <div class="cicon">⭐</div>
-          <div>
-            <div class="clabel">Rating</div>
-            <div class="cval">4.0 Stars · 10 Reviews</div>
-            <div class="cnote">"Great service — extremely happy with the results."</div>
-          </div>
-        </div>
+        <div class="citem"><div class="cicon">📞</div><div><div class="clabel">Phone</div><div class="cval">(941) 879-8853</div><div class="cnote">Call Sam directly for same-day service</div><div class="open-pill">Open · Closes 7 PM</div></div></div>
+        <div class="citem"><div class="cicon">📍</div><div><div class="clabel">Address</div><div class="cval">2209 Amanda Dr</div><div class="cnote">Sarasota, FL 34232</div></div></div>
+        <div class="citem"><div class="cicon">⭐</div><div><div class="clabel">Rating</div><div class="cval">4.5 Stars · 4 Reviews</div><div class="cnote">"Sam and his crew are professionals — you can always count on them."</div></div></div>
+        <div class="citem"><div class="cicon">⚡</div><div><div class="clabel">Response</div><div class="cval">Same-Day Service Available</div><div class="cnote">Call early for best availability</div></div></div>
       </div>
     </div>
-    <div class="form-wrap">
-      <div class="form-title">Request a Service</div>
-      <div class="form-sub">We'll be in touch within one business day.</div>
+    <div class="form-card">
+      <div class="form-title">Get a Free Quote</div>
+      <div class="form-sub">We'll get back to you quickly — same-day available.</div>
       <form action="https://formspree.io/f/mzdoepjp" method="POST">
       <div class="form-row">
-        <div class="form-group">
-          <label>First Name</label>
-          <input type="text" name="first_name" placeholder="Jane">
-        </div>
-        <div class="form-group">
-          <label>Last Name</label>
-          <input type="text" name="last_name" placeholder="Smith">
-        </div>
+        <div class="form-group"><label>First Name</label><input type="text" name="first_name" placeholder="John"></div>
+        <div class="form-group"><label>Last Name</label><input type="text" name="last_name" placeholder="Smith"></div>
       </div>
-      <div class="form-group">
-        <label>Phone Number</label>
-        <input type="tel" name="phone" placeholder="(941) 555-0000">
-      </div>
+      <div class="form-group"><label>Phone Number</label><input type="tel" name="phone" placeholder="(941) 555-0000"></div>
+      <div class="form-group"><label>Property Address</label><input type="text" name="address" placeholder="123 Main St, Sarasota FL"></div>
       <div class="form-group">
         <label>Service Needed</label>
         <select name="service">
           <option value="">Select a service...</option>
-          <option>Drapery & Curtain Cleaning</option>
-          <option>Blind Cleaning</option>
-          <option>Area Rug Cleaning</option>
-          <option>Outdoor Furniture & Cushions</option>
-          <option>Upholstery Cleaning</option>
-          <option>Multiple Services</option>
+          <option>Grapple Truck Service</option>
+          <option>Storm & Hurricane Cleanup</option>
+          <option>Tree & Brush Removal</option>
+          <option>Yard Waste Removal</option>
+          <option>Junk & Debris Hauling</option>
+          <option>Commercial Cleanup</option>
+          <option>Same-Day Emergency Service</option>
         </select>
       </div>
-      <div class="form-group">
-        <label>Additional Details</label>
-        <textarea name="message" placeholder="Tell us about the items you'd like cleaned — fabric type, size, any special concerns..."></textarea>
-      </div>
-      <button class="form-submit">Send Request</button>
+      <div class="form-group"><label>Describe the Job</label><textarea name="message" placeholder="What needs to be removed? Approximate amount, location on property..."></textarea></div>
+      <button class="form-submit">🚛 Get My Free Quote</button>
       </form>
     </div>
   </div>
@@ -561,31 +427,31 @@
 <footer>
   <div class="footer-top">
     <div>
-      <div class="footer-brand">Somers <em>Drapery</em></div>
-      <div class="footer-brand-sub">2029 Princeton St · Sarasota, FL 34237</div>
+      <div class="footer-brand">Sam's <span>Grapple Truck Service</span></div>
+      <div class="footer-brand-sub">2209 Amanda Dr · Sarasota, FL 34232</div>
     </div>
     <div class="footer-col">
       <div class="footer-col-title">Services</div>
-      <a href="#services">Drapery Cleaning</a>
-      <a href="#services">Blind Cleaning</a>
-      <a href="#services">Area Rugs</a>
-      <a href="#services">Outdoor Furniture</a>
+      <a href="#services">Grapple Truck</a>
+      <a href="#services">Storm Cleanup</a>
+      <a href="#services">Tree & Brush</a>
+      <a href="#services">Yard Waste</a>
     </div>
     <div class="footer-col">
       <div class="footer-col-title">Company</div>
-      <a href="#about">About</a>
+      <a href="#about">About Sam's</a>
       <a href="#reviews">Reviews</a>
-      <a href="#contact">Contact</a>
+      <a href="#booking">Get a Quote</a>
     </div>
     <div class="footer-col">
       <div class="footer-col-title">Contact</div>
-      <a href="tel:9419557877">(941) 955-7877</a>
-      <a href="#contact">Request a Service</a>
+      <a href="tel:9418798853">(941) 879-8853</a>
+      <a href="#booking">Free Quote</a>
     </div>
   </div>
   <div class="footer-bottom">
-    <div class="footer-copy">© 2026 Somers Drapery · Sarasota, FL · All Rights Reserved</div>
-    <div class="footer-tagline">The Art of Immaculate Drapes.</div>
+    <div class="footer-copy">© 2026 Sam's Grapple Truck Service · Sarasota, FL · All Rights Reserved</div>
+    <div class="footer-tag">Heavy Debris. Gone Fast.</div>
   </div>
 </footer>
 
